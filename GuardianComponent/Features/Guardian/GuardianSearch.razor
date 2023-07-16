@@ -3,11 +3,11 @@
 @using Microsoft.AspNetCore.Components
 @using X.PagedList;
 
-<h1>Guardian Query</h1>
+<div class="border1">
+<h1>Guardian Search Articles</h1>
 
 @if (isLoaded)
 {
-    <p>@selectedSection</p>
     <div class="search-section">
 
         <div class="search-field">
@@ -45,6 +45,7 @@ else
 {
     <p>Is Loading....</p>
 }
+</div>
 
 @code {
     SectionResult sectionResult;
