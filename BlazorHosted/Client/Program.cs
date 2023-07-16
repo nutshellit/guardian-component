@@ -11,6 +11,8 @@ public class Program
         var config = builder.Configuration["IsBlazorHosted"];
         if (config == "True")
         {
+            builder.RootComponents.Add<App>("#app");
+
         }
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
