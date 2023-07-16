@@ -1,0 +1,59 @@
+﻿@using X.PagedList;
+
+@if(PageInfo.PageCount > 1)
+{
+    <div class="pagerContainer">
+        <a href="#" @onclick=@(() => PageChanged(1))>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-square" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M10.205 12.456A.5.5 0 0 0 10.5 12V4a.5.5 0 0 0-.832-.374l-4.5 4a.5.5 0 0 0 0 .748l4.5 4a.5.5 0 0 0 .537.082z" />
+            </svg>
+        </a>
+        @if (PageInfo.HasPreviousPage)
+        {
+            <a href="#" @onclick=@(() => PageChanged(previousPage) )>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                </svg>
+            </a>
+        }
+        <div>@PageInfo.PageNumber of @PageInfo.PageCount  </div>
+        @if (PageInfo.HasNextPage)
+        {
+            <a href="#" @onclick=@(() => PageChanged(nextPage))>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                </svg>
+            </a>
+        }
+        <a href="#" @onclick=@(() => PageChanged(PageInfo.PageCount))>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z" />
+            </svg>
+        </a>
+
+    </div>
+}
+
+@code {
+    [Parameter] public IPagedList PageInfo { get; set; }
+    [Parameter] public EventCallback<int> OnPageChanged { get; set; }
+
+    int previousPage = 1;
+    int nextPage = 1;
+
+    protected override void OnParametersSet()
+    {
+        previousPage = PageInfo.HasPreviousPage ? PageInfo.PageNumber - 1 : 1;
+        nextPage = PageInfo.HasNextPage ? PageInfo.PageNumber + 1 : 1;
+    }
+
+    private async Task PageChanged(int page)
+    {
+        Console.WriteLine($"Current Page {page}");
+        await OnPageChanged.InvokeAsync(page);
+    }
+
+
+}

@@ -1,0 +1,20 @@
+﻿.searchResult {
+    display: grid;
+    grid-template-columns: 10% 1fr;
+    column-gap: 0.1rem;
+    row-gap: 0.3rem;
+}
+
+.search-section{
+    display:flex;
+}
+
+.search-field{
+    display:flex;
+    flex-direction:column;
+    margin-right:10px;
+}
+
+.search-label{
+    font-weight:bolder;
+}

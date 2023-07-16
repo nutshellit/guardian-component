@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianComponent", "GuardianComponent\GuardianComponent.csproj", "{D511CCEE-3637-4E9E-91A0-9036CDFDF9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorHosted", "BlazorHosted\BlazorHosted.csproj", "{4E308CB2-068C-4147-8EFC-DA16C2C656F3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D511CCEE-3637-4E9E-91A0-9036CDFDF9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D511CCEE-3637-4E9E-91A0-9036CDFDF9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D511CCEE-3637-4E9E-91A0-9036CDFDF9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D511CCEE-3637-4E9E-91A0-9036CDFDF9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEBB1BE6-B62B-4884-8248-27D067B0E32B}
+	EndGlobalSection
+EndGlobal

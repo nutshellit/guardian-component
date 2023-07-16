@@ -1,0 +1,18 @@
+﻿.pagerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .pagerContainer a {
+        margin-right: 8px;
+        padding-bottom: 4px;
+    }
+
+        .pagerContainer a:hover {
+            font-weight: bold;
+        }
+
+    .pagerContainer div {
+        margin-right: 8px;
+    }

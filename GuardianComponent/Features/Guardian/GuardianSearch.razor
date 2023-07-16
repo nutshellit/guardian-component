@@ -1,0 +1,113 @@
+﻿@inject IGuardianQuery guardianQuery;
+@using GuardianComponent.Features.Shared
+@using Microsoft.AspNetCore.Components
+@using X.PagedList;
+
+<h1>Guardian Query</h1>
+
+@if (isLoaded)
+{
+    <p>@selectedSection</p>
+    <div class="search-section">
+
+        <div class="search-field">
+            <label class="search-label">Search Text:</label>
+            <input @bind="searchText" class="form-control" placeholder="Press enter to submit" @bind:after="DoSearch" />
+        </div>
+        <div class="search-field">
+            <label class="search-label">Section:</label>
+            <select class="form-control" @onchange="HandleSectionChanged">
+                <option value="">-- All Sections --</option>
+                @foreach (var item in sectionResult.response.results)
+                {
+                    <option value="@item.id">@item.webTitle</option>
+                }
+            </select>
+        </div>
+    </div>
+
+    @if (hasSearchResults)
+    {
+
+        <div class="searchResult">
+            @foreach (var item in searchResult)
+            {
+                <div>@item.date</div>
+
+                <a class="link-primary" href="@item.url" target="_blank">@item.title</a>
+            }
+        </div>
+        <Pager PageInfo="@searchResult" OnPageChanged="HandlePageChanged" />
+    }
+
+}
+else
+{
+    <p>Is Loading....</p>
+}
+
+@code {
+    SectionResult sectionResult;
+
+    IPagedList<GridItem> searchResult;
+
+    bool isLoaded = false;
+    string selectedSection = "All Sections";
+    string selectedSectionId = "";
+    string searchText = "";
+    bool hasSearchResults;
+
+    override protected async Task OnInitializedAsync()
+    {
+        sectionResult = await guardianQuery.GetGuardianSections("test");
+        isLoaded = true;
+    }
+
+    async Task HandleSectionChanged(ChangeEventArgs e)
+    {
+        var sectionId = e.Value?.ToString();
+        if (!string.IsNullOrWhiteSpace(sectionId))
+        {
+
+            selectedSection = sectionResult.response.results.First(n => n.id == sectionId).webTitle;
+            selectedSectionId = sectionId;
+        }
+        else
+        {
+            selectedSection = "All Sections";
+            selectedSectionId = "";
+        }
+        await DoSearch();
+    }
+
+    async Task DoSearch()
+    {
+        await DoSearch(1);
+    }
+
+    async Task DoSearch(int page = 1)
+    {
+        Console.WriteLine($"DoSearch {searchText}");
+        if (!string.IsNullOrWhiteSpace(searchText))
+        {
+            var result = await guardianQuery.GetGuardianSearchResults("test", searchText, selectedSectionId, page);
+            hasSearchResults = true;
+            searchResult = new StaticPagedList<GridItem>(result.response.results.Select(GridItem.From), result.response.currentPage, 10, result.response.total);
+        }
+        else
+        {
+            hasSearchResults = false;
+        }
+    }
+
+    async Task HandlePageChanged(int page)
+    {
+        await DoSearch(page);
+    }
+
+    public record GridItem(string title, string url, string date)
+    {
+        public static GridItem From(SearchResult.SearchItem searchItem) =>
+            new GridItem(searchItem.webTitle, searchItem.webUrl, DateTime.Parse(searchItem.webPublicationDate).ToShortDateString());
+    }
+}
