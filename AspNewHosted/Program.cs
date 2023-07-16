@@ -1,5 +1,5 @@
 namespace AspNewHosted;
-
+using GuardianComponent;
 public class Program
 {
     public static void Main(string[] args)
@@ -8,7 +8,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
-
+        builder.Services.AddGuardianServices();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -18,6 +18,13 @@ public class Program
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
+        else
+        {
+            app.UseWebAssemblyDebugging();
+        }
+
+        app.UseBlazorFrameworkFiles();
+        app.MapFallbackToFile("index.html");
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
