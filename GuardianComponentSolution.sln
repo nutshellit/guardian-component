@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorHosted", "BlazorHoste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNewHosted", "AspNewHosted\AspNewHosted.csproj", "{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiHosted", "MauiHosted\MauiHosted.csproj", "{0DABC534-3712-4920-AEA0-DBADE558208A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,12 @@ Global
 		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DABC534-3712-4920-AEA0-DBADE558208A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
