@@ -5,20 +5,22 @@ namespace GuardianComponent.Features.Guardian;
 public class GuardianQuery : IGuardianQuery
 {
     private readonly IHttpClientFactory httpClientFactory;
+    private readonly GuardianSettings settings;
 
-    public GuardianQuery(IHttpClientFactory httpClientFactory)
+    public GuardianQuery(IHttpClientFactory httpClientFactory, GuardianSettings settings)
     {
         this.httpClientFactory = httpClientFactory;
+        this.settings = settings;
     }
 
-    public async Task<SearchResult> GetGuardianSearchResults(string apiKey, string searchQuery, string section, int page = 1)
+    public async Task<SearchResult> GetGuardianSearchResults(string searchQuery, string section, int page = 1)
     {
         var client = httpClientFactory.CreateClient("guardian");
         var endpoint = "search";
         var dict = new Dictionary<string, string>
         {
             { "format", "json" },
-            { "api-key", apiKey},
+            { "api-key", settings.key},
             {"order-by","newest"},
             { "page", page.ToString()},
             {"q", searchQuery.Contains(" ") ? $"\"{searchQuery}\"" : searchQuery}
@@ -34,14 +36,14 @@ public class GuardianQuery : IGuardianQuery
         return result!;
     }
 
-    public async Task<SectionResult> GetGuardianSections(string apiKey)
+    public async Task<SectionResult> GetGuardianSections()
     {
         var client = httpClientFactory.CreateClient("guardian");
         var endPoint = "sections";
         var queryParameters = new Dictionary<string, string>
         {
             { "format", "json" },
-            { "api-key", apiKey},
+            { "api-key", settings.key},
             {"show-references", "all"}
         };
 
@@ -51,11 +53,11 @@ public class GuardianQuery : IGuardianQuery
         return section;
     }
 
-    public async Task<TagResult> GetGuardianTags(TagQuery tagQuery, string apiKey)
+    public async Task<TagResult> GetGuardianTags(TagQuery tagQuery)
     {
         var client = httpClientFactory.CreateClient("guardian");
         var endpoint = "tags";
-        var dict = tagQuery.ToTagQuery(apiKey);
+        var dict = tagQuery.ToTagQuery(settings.key);
         var queryString = await dict.ToQuery();
         var tags = await client.GetFromJsonAsync<TagResult>($"{endpoint}?{queryString}");
         return tags!;

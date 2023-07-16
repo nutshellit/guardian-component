@@ -2,9 +2,9 @@
 
 public interface IGuardianQuery
 {
-    Task<SectionResult> GetGuardianSections(string apiKey);
+    Task<SectionResult> GetGuardianSections();
 
-    Task<TagResult> GetGuardianTags(TagQuery tagQuery, string apiKey);
+    Task<TagResult> GetGuardianTags(TagQuery tagQuery );
 
-    Task<SearchResult> GetGuardianSearchResults(string apiKey, string searchQuery, string section, int page = 1);
+    Task<SearchResult> GetGuardianSearchResults(string searchQuery, string section, int page = 1);
 }

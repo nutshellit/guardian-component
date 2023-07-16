@@ -17,7 +17,8 @@ public class Program
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-        builder.Services.AddGuardianServices();
+        var key = builder.Configuration["GuardianKey"];
+        builder.Services.AddGuardianServices(key);
         await builder.Build().RunAsync();
     }
 }

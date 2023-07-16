@@ -8,7 +8,8 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddRazorPages();
-        builder.Services.AddGuardianServices();
+        var key = builder.Configuration["GuardianKey"];
+        builder.Services.AddGuardianServices(key);
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.

@@ -60,7 +60,7 @@ else
 
     override protected async Task OnInitializedAsync()
     {
-        sectionResult = await guardianQuery.GetGuardianSections("test");
+        sectionResult = await guardianQuery.GetGuardianSections();
         isLoaded = true;
     }
 
@@ -91,7 +91,7 @@ else
         Console.WriteLine($"DoSearch {searchText}");
         if (!string.IsNullOrWhiteSpace(searchText))
         {
-            var result = await guardianQuery.GetGuardianSearchResults("test", searchText, selectedSectionId, page);
+            var result = await guardianQuery.GetGuardianSearchResults( searchText, selectedSectionId, page);
             hasSearchResults = true;
             searchResult = new StaticPagedList<GridItem>(result.response.results.Select(GridItem.From), result.response.currentPage, 10, result.response.total);
         }
