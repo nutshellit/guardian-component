@@ -1,6 +1,6 @@
 ﻿using MauiHosted.Data;
 using Microsoft.Extensions.Logging;
-
+using GuardianComponent;
 namespace MauiHosted;
 public static class MauiProgram
 {
@@ -15,9 +15,10 @@ public static class MauiProgram
             });
 
         builder.Services.AddMauiBlazorWebView();
+        builder.Services.AddGuardianServices();
 
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
+        builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 
