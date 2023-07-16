@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GuardianComponent", "Guardi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorHosted", "BlazorHosted\BlazorHosted.csproj", "{4E308CB2-068C-4147-8EFC-DA16C2C656F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNewHosted", "AspNewHosted\AspNewHosted.csproj", "{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E308CB2-068C-4147-8EFC-DA16C2C656F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72CEA7DA-EACB-46B7-A107-90B5C48EE14F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
